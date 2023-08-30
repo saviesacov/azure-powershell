@@ -1,51 +1,67 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacequeryprivatestoreoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacequeryprivatestoreuseroffer
 schema: 2.0.0
 ---
 
-# Get-AzMarketplaceQueryPrivateStoreOffer
+# Invoke-AzMarketplaceQueryPrivateStoreUserOffer
 
 ## SYNOPSIS
-List of offers, regardless the collections
+List of user's approved offers for the provided offers and subscriptions
 
 ## SYNTAX
 
-### Query (Default)
+### QueryExpanded (Default)
 ```
-Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzMarketplaceQueryPrivateStoreUserOffer -PrivateStoreId <String> [-OfferId <String[]>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Query
+```
+Invoke-AzMarketplaceQueryPrivateStoreUserOffer -PrivateStoreId <String> -Payload <IQueryUserOffersProperties>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### QueryViaIdentity
 ```
-Get-AzMarketplaceQueryPrivateStoreOffer -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzMarketplaceQueryPrivateStoreUserOffer -InputObject <IMarketplaceIdentity>
+ -Payload <IQueryUserOffersProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### QueryViaIdentityExpanded
+```
+Invoke-AzMarketplaceQueryPrivateStoreUserOffer -InputObject <IMarketplaceIdentity> [-OfferId <String[]>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List of offers, regardless the collections
+List of user's approved offers for the provided offers and subscriptions
 
 ## EXAMPLES
 
-### Example 1: Returns private store offer regardless of collections
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
+{{ Add code here }}
 ```
 
 ```output
-CreatedAt ETag                                   ModifiedAt OfferDisplayName PrivateStoreId                       PublisherDisplayName SpecificPlanIdLimitation                                                     UniqueOfferId
---------- ----                                   ---------- ---------------- --------------                       -------------------- -------------------------                                                     -------------
-          "ed0093ae-0000-0100-0000-61a4dab30000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {d3-azure-health-check, data3-azure-optimiser-plan, data3-managed-azure-plan} data3-limite…
-          "750547d8-0000-0100-0000-61b752010000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {mgmt-limited-free, mgmt-assessment}                                          viacode_cons…
-          "ef00ab05-0000-0100-0000-61a5f12f0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {RedHatEnterpriseLinux72-ARM}                                                 RedHat.RHEL_7
-          "f300276b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_conductor_hourly_427, 128technology_conductor_hourly_452}      128technolog…
-          "f300296b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_router_100_hourly_427, 128technology_router_100_hourly_452}    128technolog…
-
+{{ Add output here }}
 ```
 
-This command returns private store offer regardless of collections
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -71,7 +87,38 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: QueryViaIdentity
+Parameter Sets: QueryViaIdentity, QueryViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -OfferId
+List of offer IDs
+
+```yaml
+Type: System.String[]
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Payload
+Query user's offers properties
+To construct, see NOTES section for PAYLOAD properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IQueryUserOffersProperties
+Parameter Sets: Query, QueryViaIdentity
 Aliases:
 
 Required: True
@@ -86,12 +133,27 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Query
+Parameter Sets: Query, QueryExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+List of subscription IDs
+
+```yaml
+Type: System.String[]
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,6 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IQueryUserOffersProperties
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
@@ -154,6 +218,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[OfferId <String>]`: The offer ID to update or delete
   - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
+
+`PAYLOAD <IQueryUserOffersProperties>`: Query user's offers properties
+  - `[OfferId <String[]>]`: List of offer IDs
+  - `[SubscriptionId <String[]>]`: List of subscription IDs
 
 ## RELATED LINKS
 

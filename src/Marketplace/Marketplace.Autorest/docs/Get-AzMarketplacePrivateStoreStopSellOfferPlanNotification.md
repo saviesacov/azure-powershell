@@ -1,44 +1,56 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacebillingprivatestoreaccount
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorestopsellofferplannotification
 schema: 2.0.0
 ---
 
-# Get-AzMarketplaceBillingPrivateStoreAccount
+# Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification
 
 ## SYNOPSIS
-Tenant billing accounts names
+List stop sell notifications for both stop sell offers and stop sell plans
 
 ## SYNTAX
 
-### Billing (Default)
+### ListExpanded (Default)
 ```
-Get-AzMarketplaceBillingPrivateStoreAccount -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification -PrivateStoreId <String> [-Subscription <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### BillingViaIdentity
+### List
 ```
-Get-AzMarketplaceBillingPrivateStoreAccount -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification -PrivateStoreId <String>
+ -StopSellSubscription <IStopSellSubscriptions> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Tenant billing accounts names
+List stop sell notifications for both stop sell offers and stop sell plans
 
 ## EXAMPLES
 
-### Example 1: Returns the billing account of a private store 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMarketplaceBillingPrivateStoreAccount -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
+{{ Add code here }}
 ```
 
 ```output
-<billing account[string]>
+{{ Add output here }}
 ```
 
-This command returns the billing account of a private store.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -58,13 +70,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -PrivateStoreId
+The store ID - must use the tenant ID
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: BillingViaIdentity
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StopSellSubscription
+Private plans subscriptions
+To construct, see NOTES section for STOPSELLSUBSCRIPTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IStopSellSubscriptions
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -74,15 +101,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PrivateStoreId
-The store ID - must use the tenant ID
+### -Subscription
+.
 
 ```yaml
-Type: System.String
-Parameter Sets: Billing
+Type: System.String[]
+Parameter Sets: ListExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,11 +152,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IStopSellSubscriptions
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IStopSellOffersPlansNotificationsListProperties
 
 ## NOTES
 
@@ -140,13 +167,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMarketplaceIdentity>`: Identity Parameter
-  - `[AdminRequestApprovalId <String>]`: The admin request approval ID to get create or update
-  - `[CollectionId <String>]`: The collection ID
-  - `[Id <String>]`: Resource identity path
-  - `[OfferId <String>]`: The offer ID to update or delete
-  - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
-  - `[RequestApprovalId <String>]`: The request approval ID to get create or update
+`STOPSELLSUBSCRIPTION <IStopSellSubscriptions>`: Private plans subscriptions
+  - `[Subscription <String[]>]`: 
 
 ## RELATED LINKS
 

@@ -59,7 +59,8 @@ This command For a given subscriptions list, will return a map of collections an
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -94,7 +95,7 @@ The subscriptions list to get the related collections
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionsToSubscriptionsMappingPayload
 Parameter Sets: Collections, CollectionsViaIdentity
 Aliases:
 
@@ -171,13 +172,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionsToSubscriptionsMappingPayload
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionsToSubscriptionsMappingResponseProperties
 
 ## NOTES
 
@@ -188,7 +189,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
+`INPUTOBJECT <IMarketplaceIdentity>`: Identity Parameter
   - `[AdminRequestApprovalId <String>]`: The admin request approval ID to get create or update
   - `[CollectionId <String>]`: The collection ID
   - `[Id <String>]`: Resource identity path
@@ -196,7 +197,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
-PAYLOAD <ICollectionsToSubscriptionsMappingPayload>: The subscriptions list to get the related collections
+`PAYLOAD <ICollectionsToSubscriptionsMappingPayload>`: The subscriptions list to get the related collections
   - `[SubscriptionId <String[]>]`: Subscriptions ids list
 
 ## RELATED LINKS

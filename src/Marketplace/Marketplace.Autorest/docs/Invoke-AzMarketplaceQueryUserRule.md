@@ -1,51 +1,67 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacequeryprivatestoreoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacequeryuserrule
 schema: 2.0.0
 ---
 
-# Get-AzMarketplaceQueryPrivateStoreOffer
+# Invoke-AzMarketplaceQueryUserRule
 
 ## SYNOPSIS
-List of offers, regardless the collections
+All rules approved in the private store that are relevant for user subscriptions
 
 ## SYNTAX
 
-### Query (Default)
+### QueryExpanded (Default)
 ```
-Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzMarketplaceQueryUserRule -PrivateStoreId <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Query
+```
+Invoke-AzMarketplaceQueryUserRule -PrivateStoreId <String> -Payload <IQueryUserRulesProperties>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### QueryViaIdentity
 ```
-Get-AzMarketplaceQueryPrivateStoreOffer -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzMarketplaceQueryUserRule -InputObject <IMarketplaceIdentity> -Payload <IQueryUserRulesProperties>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### QueryViaIdentityExpanded
+```
+Invoke-AzMarketplaceQueryUserRule -InputObject <IMarketplaceIdentity> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List of offers, regardless the collections
+All rules approved in the private store that are relevant for user subscriptions
 
 ## EXAMPLES
 
-### Example 1: Returns private store offer regardless of collections
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a
+{{ Add code here }}
 ```
 
 ```output
-CreatedAt ETag                                   ModifiedAt OfferDisplayName PrivateStoreId                       PublisherDisplayName SpecificPlanIdLimitation                                                     UniqueOfferId
---------- ----                                   ---------- ---------------- --------------                       -------------------- -------------------------                                                     -------------
-          "ed0093ae-0000-0100-0000-61a4dab30000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {d3-azure-health-check, data3-azure-optimiser-plan, data3-managed-azure-plan} data3-limite…
-          "750547d8-0000-0100-0000-61b752010000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {mgmt-limited-free, mgmt-assessment}                                          viacode_cons…
-          "ef00ab05-0000-0100-0000-61a5f12f0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {RedHatEnterpriseLinux72-ARM}                                                 RedHat.RHEL_7
-          "f300276b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_conductor_hourly_427, 128technology_conductor_hourly_452}      128technolog…
-          "f300296b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_router_100_hourly_427, 128technology_router_100_hourly_452}    128technolog…
-
+{{ Add output here }}
 ```
 
-This command returns private store offer regardless of collections
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -71,7 +87,23 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: QueryViaIdentity
+Parameter Sets: QueryViaIdentity, QueryViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Payload
+Query user's rules properties
+To construct, see NOTES section for PAYLOAD properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IQueryUserRulesProperties
+Parameter Sets: Query, QueryViaIdentity
 Aliases:
 
 Required: True
@@ -86,12 +118,27 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Query
+Parameter Sets: Query, QueryExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+List of subscription IDs
+
+```yaml
+Type: System.String[]
+Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,11 +179,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IQueryUserRulesProperties
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IQueryOffers
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IRuleListResponse
 
 ## NOTES
 
@@ -154,6 +203,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[OfferId <String>]`: The offer ID to update or delete
   - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
+
+`PAYLOAD <IQueryUserRulesProperties>`: Query user's rules properties
+  - `[SubscriptionId <String[]>]`: List of subscription IDs
 
 ## RELATED LINKS
 

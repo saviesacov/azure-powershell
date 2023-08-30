@@ -1,71 +1,57 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplaceanyprivatestoreexistingoffer
 schema: 2.0.0
 ---
 
-# Get-AzMarketplacePrivateStoreCollection
+# Invoke-AzMarketplaceAnyPrivateStoreExistingOffer
 
 ## SYNOPSIS
-Gets private store collection
+Query whether exists any offer in the collections.
 
 ## SYNTAX
 
-### List (Default)
+### Any (Default)
 ```
-Get-AzMarketplacePrivateStoreCollection -PrivateStoreId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzMarketplaceAnyPrivateStoreExistingOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### AnyViaIdentity
 ```
-Get-AzMarketplacePrivateStoreCollection -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Invoke-AzMarketplaceAnyPrivateStoreExistingOffer -InputObject <IMarketplaceIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets private store collection
+Query whether exists any offer in the collections.
 
 ## EXAMPLES
 
-### Example 1: Get list of private store collections
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMarketplacePrivateStoreCollection -PrivateStoreId 53425a7b-4ac1-4729-8340-e1da5046212c
+{{ Add code here }}
 ```
 
 ```output
-Name                                 SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
-----                                 -------------------  ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-53425a7b-4ac1-4729-8340-e1da5046212c                                          User                    8/23/2021 6:06:52 AM                              User
-23455a7b-4ac1-4729-8340-e1da5046212c 12/1/2021 9:01:33 PM                     User                    12/1/2021 9:01:33 PM                              User
-
+{{ Add output here }}
 ```
 
-This command gets list of private store collections
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -CollectionId
-The collection ID
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -89,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: AnyViaIdentity
 Aliases:
 
 Required: True
@@ -104,10 +90,41 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Any
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,9 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollection
-
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionsList
+### System.Boolean
 
 ## NOTES
 

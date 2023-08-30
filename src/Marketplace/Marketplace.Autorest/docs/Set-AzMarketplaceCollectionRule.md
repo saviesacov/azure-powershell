@@ -1,62 +1,67 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestore
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplacecollectionrule
 schema: 2.0.0
 ---
 
-# Set-AzMarketplacePrivateStore
+# Set-AzMarketplaceCollectionRule
 
 ## SYNOPSIS
-Changes private store properties
+Set rule for specific private store and collection
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
-Set-AzMarketplacePrivateStore -Id <String> [-Availability <Availability>] [-Branding <Hashtable>]
- [-ETag <String>] [-IsGov] [-NotificationSettingRecipient <IRecipient[]>]
- [-NotificationSettingSendToAllMarketplaceAdmin] [-PrivateStoreName <String>] [-TenantId <String>]
+Set-AzMarketplaceCollectionRule -CollectionId <String> -PrivateStoreId <String> [-NextLink <String>]
+ [-Value <IRule[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzMarketplaceCollectionRule -CollectionId <String> -PrivateStoreId <String> -Payload <ISetRulesRequest>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Changes private store properties
+Set rule for specific private store and collection
 
 ## EXAMPLES
 
-### Example 1: Changes private store properties
+### Example 1: {{ Add title here }}
 ```powershell
-Set-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
+{{ Add code here }}
 ```
 
-This command changes private store properties
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -Availability
-Indicates private store availability
+### -CollectionId
+The collection ID
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Support.Availability
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Branding
-Gets or sets list of branding characteristics
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -79,73 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ETag
-Identifier for purposes of race condition
+### -NextLink
+URL to get the next set of rules list results if there are any.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-The store ID - must use the tenant ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: PrivateStoreId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IsGov
-Is government
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NotificationSettingRecipient
-Gets or sets list of notified recipients for new requests
-To construct, see NOTES section for NOTIFICATIONSETTINGRECIPIENT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IRecipient[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NotificationSettingSendToAllMarketplaceAdmin
-Gets or sets whether to send email to all marketplace admins for new requests
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -170,27 +114,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateStoreName
-Private Store Name
+### -Payload
+.
+To construct, see NOTES section for PAYLOAD properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ISetRulesRequest
+Parameter Sets: Set
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrivateStoreId
+The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TenantId
-Tenant id
+### -Value
+.
+To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IRule[]
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -236,6 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ISetRulesRequest
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -249,8 +212,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`NOTIFICATIONSETTINGRECIPIENT <IRecipient[]>`: Gets or sets list of notified recipients for new requests
-  - `[PrincipalId <String>]`: Principal ID
+`PAYLOAD <ISetRulesRequest>`: .
+  - `[NextLink <String>]`: URL to get the next set of rules list results if there are any.
+  - `[Value <IRule[]>]`: 
+    - `[Type <RuleType?>]`: Rule type
+    - `[Value <String[]>]`: 
+
+`VALUE <IRule[]>`: .
+  - `[Type <RuleType?>]`: Rule type
+  - `[Value <String[]>]`: 
 
 ## RELATED LINKS
 

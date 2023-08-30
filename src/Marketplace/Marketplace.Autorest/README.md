@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Marketplace service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -38,9 +38,9 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
-branch: 8dc5f1df21caf602944de05e68945c2bbf009c2d
+branch: a54263176acce91199a19333d6c4717367a3317e
 input-file:
-  - $(repo)/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-06-01/Marketplace.json
+  - $(repo)/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/Marketplace.json
 
 module-version: 1.1.0
 title: Marketplace

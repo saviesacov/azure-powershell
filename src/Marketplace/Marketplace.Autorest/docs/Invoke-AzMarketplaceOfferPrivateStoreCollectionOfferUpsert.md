@@ -1,67 +1,71 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollectionoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplaceofferprivatestorecollectionofferupsert
 schema: 2.0.0
 ---
 
-# Get-AzMarketplacePrivateStoreCollectionOffer
+# Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert
 
 ## SYNOPSIS
-Gets information about a specific offer.
+Upsert an offer with multiple context details.
 
 ## SYNTAX
 
-### List (Default)
+### OfferExpanded (Default)
 ```
-Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
+ -PrivateStoreId <String> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### Offer
 ```
-Get-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
+Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
+ -PrivateStoreId <String> -Payload <IMultiContextAndPlansPayload> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### OfferViaIdentity
+```
+Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -InputObject <IMarketplaceIdentity>
+ -Payload <IMultiContextAndPlansPayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### List1
+### OfferViaIdentityExpanded
 ```
-Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- -Payload <ICollectionOffersByAllContextsPayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ListExpanded
-```
-Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -InputObject <IMarketplaceIdentity>
+ [-OfferId <String>] [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information about a specific offer.
+Upsert an offer with multiple context details.
 
 ## EXAMPLES
 
-### Example 1: Gets collection offers.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
+{{ Add code here }}
 ```
 
 ```output
-Name                                            SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
-----                        			------------------- ------------------- ----------------------- ------------------------ ------------------------ -------------------
-data3-limited-1019419.d3_azure_managed_services
-viacode_consulting-1089577.viacodems
-RedHat.RHEL_7
+{{ Add output here }}
 ```
 
-This command get colletion offer
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,7 +74,7 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1, ListExpanded
+Parameter Sets: Offer, OfferExpanded
 Aliases:
 
 Required: True
@@ -96,13 +100,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ETag
+The offer's eTag.
+
+```yaml
+Type: System.String
+Parameter Sets: OfferExpanded, OfferViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: OfferViaIdentity, OfferViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -117,7 +136,7 @@ The offer ID to update or delete
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Offer, OfferExpanded, OfferViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -128,12 +147,12 @@ Accept wildcard characters: False
 ```
 
 ### -Payload
-Suggested subscription list
+Payload object for upsert offer with multiple context and plans.
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionOffersByAllContextsPayload
-Parameter Sets: List1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IMultiContextAndPlansPayload
+Parameter Sets: Offer, OfferViaIdentity
 Aliases:
 
 Required: True
@@ -143,12 +162,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -PlansContext
+.
+To construct, see NOTES section for PLANSCONTEXT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IContextAndPlansDetails[]
+Parameter Sets: OfferExpanded, OfferViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrivateStoreId
 The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1, ListExpanded
+Parameter Sets: Offer, OfferExpanded
 Aliases:
 
 Required: True
@@ -158,17 +193,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Subscription ids list
+### -PropertiesOfferId
+The offer ID which contains the plans.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: ListExpanded
+Type: System.String
+Parameter Sets: OfferExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,13 +244,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionOffersByAllContextsPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IMultiContextAndPlansPayload
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.ICollectionOffersByContext
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api202301.IOffer
 
@@ -236,8 +269,16 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
-`PAYLOAD <ICollectionOffersByAllContextsPayload>`: Suggested subscription list
-  - `[SubscriptionId <String[]>]`: Subscription ids list
+`PAYLOAD <IMultiContextAndPlansPayload>`: Payload object for upsert offer with multiple context and plans.
+  - `[ETag <String>]`: The offer's eTag.
+  - `[OfferId <String>]`: The offer ID which contains the plans.
+  - `[PlansContext <IContextAndPlansDetails[]>]`: 
+    - `[Context <String>]`: Plan's context, e.g. subscription ID, tenant ID.
+    - `[PlanId <String[]>]`: List of plan IDs.
+
+`PLANSCONTEXT <IContextAndPlansDetails[]>`: .
+  - `[Context <String>]`: Plan's context, e.g. subscription ID, tenant ID.
+  - `[PlanId <String[]>]`: List of plan IDs.
 
 ## RELATED LINKS
 
